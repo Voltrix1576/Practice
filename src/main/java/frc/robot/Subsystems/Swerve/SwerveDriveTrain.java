@@ -61,14 +61,19 @@ public class SwerveDriveTrain extends SubsystemBase {
     SwerveConstants.REAR_RIGHT_IS_TURNING_MOTOR_INVERTED,
     SwerveConstants.REAR_RIGHT_IS_ABSULOTE_ENCODER_INVERTED);
 
-  private final Translation2d frontLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
-  private final Translation2d frontRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
-  private final Translation2d rearLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
-  private final Translation2d rearRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
+  // private final Translation2d frontLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
+  // private final Translation2d frontRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
+  // private final Translation2d rearLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
+  // private final Translation2d rearRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
 
-  private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(frontLeftLocation, frontRightLocation, rearLeftLocation, rearRightLocation);
+  private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
+  new Translation2d(SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //front left
+  new Translation2d(SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0), // front right
+  new Translation2d(-SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //rear left
+  new Translation2d(-SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0)); //rear right
 
   public SwerveDriveTrain() {
+    
     navx.reset();
   }
 
@@ -130,10 +135,6 @@ public class SwerveDriveTrain extends SubsystemBase {
     }
     return instance;
   }
-
-
-  
-
 
 
   @Override
