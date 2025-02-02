@@ -21,7 +21,7 @@ public class SwerveDriveTrain extends SubsystemBase {
   public double maxV = SwerveConstants.MAX_VELOCITY;
   public double maxAV = SwerveConstants.MAX_ANGULAR_VELOCITY;
 
-  public double offsetAngle = 0;
+  public double offsetAngle = 90;
 
   private final AHRS navx = new AHRS(NavXComType.kMXP_SPI);
 
@@ -61,16 +61,19 @@ public class SwerveDriveTrain extends SubsystemBase {
     SwerveConstants.REAR_RIGHT_IS_TURNING_MOTOR_INVERTED,
     SwerveConstants.REAR_RIGHT_IS_ABSULOTE_ENCODER_INVERTED);
 
-  // private final Translation2d frontLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
-  // private final Translation2d frontRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
-  // private final Translation2d rearLeftLocation = new Translation2d(-SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
-  // private final Translation2d rearRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, -SwerveConstants.LENGTH / 2);
+  private final Translation2d frontLeftLocation = new Translation2d(SwerveConstants.WIDTH / 2, SwerveConstants.LENGTH / 2);
+  private final Translation2d frontRightLocation = new Translation2d(SwerveConstants.WIDTH / 2, -(SwerveConstants.LENGTH / 2));
+  private final Translation2d rearLeftLocation = new Translation2d(-(SwerveConstants.WIDTH / 2), SwerveConstants.LENGTH / 2);
+  private final Translation2d rearRightLocation = new Translation2d(-(SwerveConstants.WIDTH / 2), -(SwerveConstants.LENGTH / 2));
 
-  private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-  new Translation2d(SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //front left
-  new Translation2d(SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0), // front right
-  new Translation2d(-SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //rear left
-  new Translation2d(-SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0)); //rear right
+  private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(frontLeftLocation, 
+  frontRightLocation,
+  rearLeftLocation, rearRightLocation); 
+
+  // new Translation2d(SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //front left
+  // new Translation2d(SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0), // front right
+  // new Translation2d(-SwerveConstants.WIDTH / 2.0, SwerveConstants.WIDTH / 2.0), //rear left
+  // new Translation2d(-SwerveConstants.WIDTH / 2.0, -SwerveConstants.WIDTH / 2.0) //rear right
 
   public SwerveDriveTrain() {
     
@@ -114,10 +117,10 @@ public class SwerveDriveTrain extends SubsystemBase {
 
   public void setSwerveState(SwerveModuleState[] states) {
     SwerveDriveKinematics.desaturateWheelSpeeds(states, SwerveConstants.MAX_VELOCITY);
-    frontLeftModule.setDesiredState(states[0]);
-    frontRightModule.setDesiredState(states[1]);
-    rearLeftModule.setDesiredState(states[2]);
-    rearRightModule.setDesiredState(states[3]);
+    frontLeftModule.setDesiredState(states[2]);
+    frontRightModule.setDesiredState(states[3]);
+    rearLeftModule.setDesiredState(states[0]);
+    rearRightModule.setDesiredState(states[1]);
   }
 
   public void drive(double xv, double yv, double omega, boolean isFieldrelative) {
@@ -150,6 +153,10 @@ public class SwerveDriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("Rear Right Angle", rearRightModule.getTurningPose());
 
     SmartDashboard.putNumber("navx", getAngle());
+
+    //rearRightModule.driveMotorSetPower(0.4);
+    //rearRightModule.turningMotorSetPower(0.4);
+    
 
   }
 }

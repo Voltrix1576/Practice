@@ -7,25 +7,25 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Subsystems.Swerve.SwerveDriveTrain;
 
 public class RobotContainer {
-  public static CommandPS4Controller driverController = new CommandPS4Controller(0);
+  public static CommandXboxController driverController = new CommandXboxController(0);
 
   public RobotContainer() {
     configureBindings();
   }
 
   private void configureBindings() {
-    driverController.triangle().whileTrue(new InstantCommand(() -> SwerveDriveTrain.getInstance().updateOffset()));
+    driverController.y().whileTrue(new InstantCommand(() -> SwerveDriveTrain.getInstance().updateOffset()));
 
-    driverController.R1().whileTrue(
+    driverController.rightBumper().whileTrue(
       new InstantCommand(() -> SwerveDriveTrain.getInstance().setVelocityFactor(0.5)))
     .whileFalse(new InstantCommand(() -> SwerveDriveTrain.getInstance().setVelocityFactor(1)));  
   
   
-    driverController.L1().whileTrue(
+    driverController.leftBumper().whileTrue(
      new InstantCommand(() -> SwerveDriveTrain.getInstance().setVelocityFactor(0.25)))
     .whileFalse(new InstantCommand(() -> SwerveDriveTrain.getInstance().setVelocityFactor(1)));
 

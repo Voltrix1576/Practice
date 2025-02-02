@@ -35,37 +35,37 @@ public class SwerveConstants {
     public static final double MAX_ANGOLAR_ACCELERATION = MAX_ACCELERATION / RADIUS;
 
     //front left module
-    public static final int FRONT_LEFT_DRIVE_ID = 2;
-    public static final int FRONT_LEFT_TURNING_ID = 13;
-    public static final int FRONT_LEFT_ABSULOTE_ENCODER_ID = 8; 
-    public static final double FRONT_LEFT_ABSULOTE_ENCODER_OFFSET = 135.966;
-    public static final boolean FRONT_LEFT_IS_DRIVE_MOTOR_INVERTED  = false;  
+    public static final int FRONT_LEFT_DRIVE_ID = 5;
+    public static final int FRONT_LEFT_TURNING_ID = 12;
+    public static final int FRONT_LEFT_ABSULOTE_ENCODER_ID = 7; 
+    public static final double FRONT_LEFT_ABSULOTE_ENCODER_OFFSET = 130.869;
+    public static final boolean FRONT_LEFT_IS_DRIVE_MOTOR_INVERTED  = true;  
     public static final boolean FRONT_LEFT_IS_TURNING_MOTOR_INVERTED = true;
     public static final boolean FRONT_LEFT_IS_ABSULOTE_ENCODER_INVERTED = true;
 
     //front right module
-    public static final int FRONT_RIGHT_DRIVE_ID = 6;
-    public static final int FRONT_RIGHT_TURNING_ID = 14;
-    public static final int FRONT_RIGHT_ABSULOTE_ENCODER_ID = 9; 
-    public static final double FRONT_RIGHT_ABSULOTE_ENCODER_OFFSET = 119.707;
+    public static final int FRONT_RIGHT_DRIVE_ID = 2;
+    public static final int FRONT_RIGHT_TURNING_ID = 13;
+    public static final int FRONT_RIGHT_ABSULOTE_ENCODER_ID = 8; 
+    public static final double FRONT_RIGHT_ABSULOTE_ENCODER_OFFSET = 52.998;
     public static final boolean FRONT_RIGHT_IS_DRIVE_MOTOR_INVERTED  = true;  
     public static final boolean FRONT_RIGHT_IS_TURNING_MOTOR_INVERTED = true;
     public static final boolean FRONT_RIGHT_IS_ABSULOTE_ENCODER_INVERTED = true;
 
     //rear left module
-    public static final int REAR_LEFT_DRIVE_ID = 5;
-    public static final int REAR_LEFT_TURNING_ID = 12;
-    public static final int REAR_LEFT_ABSULOTE_ENCODER_ID = 7; 
-    public static final double REAR_LEFT_ABSULOTE_ENCODER_OFFSET = 223.066;
-    public static final boolean REAR_LEFT_IS_DRIVE_MOTOR_INVERTED  = false;   
+    public static final int REAR_LEFT_DRIVE_ID = 4;
+    public static final int REAR_LEFT_TURNING_ID = 11;
+    public static final int REAR_LEFT_ABSULOTE_ENCODER_ID = 10; 
+    public static final double REAR_LEFT_ABSULOTE_ENCODER_OFFSET = 344.443;
+    public static final boolean REAR_LEFT_IS_DRIVE_MOTOR_INVERTED  = true;   
     public static final boolean REAR_LEFT_IS_TURNING_MOTOR_INVERTED = true;
     public static final boolean REAR_LEFT_IS_ABSULOTE_ENCODER_INVERTED = true;
 
     //rear right module
-    public static final int REAR_RIGHT_DRIVE_ID = 4;
-    public static final int REAR_RIGHT_TURNING_ID = 11;
-    public static final int REAR_RIGHT_ABSULOTE_ENCODER_ID = 10; 
-    public static final double REAR_RIGHT_ABSULOTE_ENCODER_OFFSET = 71.982;
+    public static final int REAR_RIGHT_DRIVE_ID = 6;
+    public static final int REAR_RIGHT_TURNING_ID = 14;
+    public static final int REAR_RIGHT_ABSULOTE_ENCODER_ID = 9; 
+    public static final double REAR_RIGHT_ABSULOTE_ENCODER_OFFSET = 32.255;
     public static final boolean REAR_RIGHT_IS_DRIVE_MOTOR_INVERTED  = true;  
     public static final boolean REAR_RIGHT_IS_TURNING_MOTOR_INVERTED = true;
     public static final boolean REAR_RIGHT_IS_ABSULOTE_ENCODER_INVERTED = true;
